@@ -20,13 +20,15 @@ export function activate(context: vscode.ExtensionContext) {
         // Display a message box to the user
         const testPath = path.join(__dirname, '../test.txt');
         vscode.window.showInformationMessage('Hello World! ' + testPath);
-
-        const lsPtyFunc = require(path.join(__dirname, './node-pty-sample'));
+  
         try {
-            const outputChannel = vscode.window.createOutputChannel(`My Test`);
-            outputChannel.show();
+            const scriptPath = path.join(__dirname, './node-pty-sample');
+            vscode.window.showInformationMessage('Hello World! ' + scriptPath);
+            const lsPtyFunc = require(scriptPath);
+            // const outputChannel = vscode.window.createOutputChannel(`My Test`);
+            // outputChannel.show();
 
-            lsPtyFunc.PtyLS(outputChannel);
+            lsPtyFunc.PtyLS();
         } catch (err) {
             vscode.window.showInformationMessage('Hello World Error: ' + err);
         }
